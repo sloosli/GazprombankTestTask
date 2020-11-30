@@ -1,0 +1,48 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div>
+    <br>
+    <h2>Пожалуйста, пройдите опрос</h2>
+    <br>
+    <form method="post">
+        <div class="form-group">
+            <label for="familyInput">Фаимилия</label>
+            <input type="text" class="form-control" id="familyInput" name="user_family" required>
+        </div>
+        <div class="form-group">
+            <label for="nameInput">Имя</label>
+            <input type="text" class="form-control" id="nameInput" name="user_name" required>
+        </div>
+        <div class="form-group">
+            <label for="patronymicInput">Отчество</label>
+            <input type="text" class="form-control" id="patronymicInput" name="user_patronymic" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Укажите ваш пол</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="user_sex" required>
+                <option value="1">Мужской</option>
+                <option value="2">Женский</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ageInput">Укажите ваш возраст</label>
+            <input type="number" class="form-control" id="ageInput" name="user_age" min="10" max="110" required>
+        </div>
+        <div class="form-group">
+            <label for="townSelect">Тестирование города</label>
+            <select class="form-control" id="townSelect" name="user_living_town" required>
+                {% for town in towns%}
+                <option value="{{ town.id }}">{{ town.value }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="questionTextArea">Вопрос?</label>
+            <textarea class="form-control" id="questionTextArea" name="user_question" rows="3"
+                      required></textarea>
+        </div>
+        <button class="btn btn-success" type="submit">Отправить</button>
+    </form>
+</div>
+{% endblock %}
